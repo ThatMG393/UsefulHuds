@@ -40,7 +40,26 @@ public class InGameHudMixin {
 					context, client.textRenderer,
 					text,
 					textPos[0], textPos[1],
-					1.0f, 0xFFFFFF,
+					1.0f, config.fps_textColor,
+					false
+				);
+			}
+
+			if (config.std_showHud) {
+				boolean isSprintingHeld = client.player.isSprinting();
+				boolean isSprintingToggled = client.options.getSprintToggled().getValue();
+
+				String text = "§7§oSprint Held"; // TODO: add ability to change the text in config
+				if (isSprintingToggled && isSprintingHeld) {
+					text = "§7§oSprint Toggled";
+				}
+
+				int[] textPos = DrawUtils.getProperOffsets(client, 20, 30, text);
+				DrawUtils.renderText(
+					context, client.textRenderer,
+					text,
+					textPos[0], textPos[1],
+					1.0f, config.std_textColor,
 					false
 				);
 			}
