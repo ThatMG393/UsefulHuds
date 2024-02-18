@@ -12,6 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import com.thatmg393.usefulhuds.config.ModConfigData;
 import com.thatmg393.usefulhuds.config.ModConfigManager;
 import com.thatmg393.usefulhuds.utils.DrawUtils;
+import com.thatmg393.usefulhuds.utils.FPSHistory;
 
 @Mixin(InGameHud.class)
 public class InGameHudMixin {
@@ -21,9 +22,17 @@ public class InGameHudMixin {
 		ModConfigData config = ModConfigManager.loadConfig();
 		
 		if (!client.options.hudHidden && !client.getDebugHud().shouldShowDebugHud()) {
-			if (config.showFpsHud) {
+			if (config.fps_showHud) {
+				FPSHistory fpsHistory = FPSHistory.getInstance();
+
 				int fps = ((MinecraftClientAccessor) client).getCurrentFps();
+				fpsHistory.addFPS(fps);
+
 				String text = fps + " FPS";
+				if (config.fps_showAdvanceInfo) {
+					int min = fpsHistory.getMin(), avg = fpsHistory.getAvg(), max = fpsHistory.getMax();
+					text += " ( " + min + " min | " + avg + " avg | " + max + " max )";
+				}
 
 				int[] textPos = DrawUtils.getProperOffsets(client, 20, 20, text);
 

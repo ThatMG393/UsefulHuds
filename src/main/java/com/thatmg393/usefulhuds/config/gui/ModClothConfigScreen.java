@@ -30,9 +30,19 @@ public class ModClothConfigScreen {
         generalCategory.addEntry(
             entryBuilder.startBooleanToggle(
                 Text.of("Show FPS Display"),
-                loadedConfig.showFpsHud
-            ).setDefaultValue(defaults.showFpsHud)
-            .setSaveConsumer(newValue -> loadedConfig.showFpsHud = newValue)
+                loadedConfig.fps_showHud
+            ).setDefaultValue(defaults.fps_showHud)
+            .setSaveConsumer(newValue -> loadedConfig.fps_showHud = newValue)
+            .build()
+        );
+
+        ConfigCategory advanceCategory = configBuilder.getOrCreateCategory(Text.of("Advance"));
+        advanceCategory.addEntry(
+            entryBuilder.startBooleanToggle(
+                Text.of("Show MinAvgMax in FPS Display"),
+                loadedConfig.fps_showAdvanceInfo
+            ).setDefaultValue(defaults.fps_showAdvanceInfo)
+            .setSaveConsumer(newValue -> loadedConfig.fps_showAdvanceInfo = newValue)
             .build()
         );
 
