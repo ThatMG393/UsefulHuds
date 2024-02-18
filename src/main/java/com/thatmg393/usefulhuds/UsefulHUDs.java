@@ -50,14 +50,8 @@ public class UsefulHUDs implements ModInitializer {
 		ModConfigData loadedConfig = ModConfigManager.loadConfig();
 
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
-			if (showFpsKeyBind.wasPressed() && loadedConfig.showFpsKeyMode == ModConfigData.KeyMode.Toggle) {
+			if (showFpsKeyBind.wasPressed()) {
 				loadedConfig.showFpsHud = !loadedConfig.showFpsHud;
-			} else {
-				if (showFpsKeyBind.isPressed()) {
-					loadedConfig.showFpsHud = true;
-				} else {
-					loadedConfig.showFpsHud = false;
-				}
 			}
 		});
 	}
