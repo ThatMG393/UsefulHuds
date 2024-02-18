@@ -4,6 +4,7 @@ package com.thatmg393.usefulhuds;
 import org.lwjgl.glfw.GLFW;
 
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import net.fabricmc.api.EnvType;
@@ -40,16 +41,21 @@ public class UsefulHUDs implements ModInitializer {
 	private void initalizeKeybinds() {
 		KeyBinding showFpsKeyBind = KeyBindingHelper.registerKeyBinding(
 			new KeyBinding(
-				"key.usefulhuds.showFpsToggle",
+				"usefulhuds.key.toggleFps",
 				InputUtil.Type.KEYSYM,
 				GLFW.GLFW_DONT_CARE,
-				"key.usefulhuds.category"
+				"usefulhuds.key.category"
 			)
 		);
 
 		ModConfigData loadedConfig = ModConfigManager.loadConfig();
 
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
+			int maxFps = client.options.getMaxFps().getValue();
+			if (maxFps != loadedConfig.fps_histroyMax) {
+				loadedConfig.fps_histroyMax = maxFps;
+			}
+
 			if (showFpsKeyBind.wasPressed()) {
 				loadedConfig.fps_showHud = !loadedConfig.fps_showHud;
 			}
