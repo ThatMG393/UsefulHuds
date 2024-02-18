@@ -55,7 +55,7 @@ public class InGameHudMixin {
 				} else {
 					if (isSprintingHeld) {
 						text = "§7§oSprint Held";
-					} else {
+					} else if (client.player.speed > 0) {
 						text = "§7§oWalking";
 					}
 				}
