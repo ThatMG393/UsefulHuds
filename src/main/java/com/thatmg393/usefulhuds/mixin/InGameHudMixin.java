@@ -47,11 +47,17 @@ public class InGameHudMixin {
 
 			if (config.std_showHud) {
 				boolean isSprintingHeld = client.player.isSprinting();
-				boolean isSprintingToggled = client.options.getSprintToggled().getValue();
+				boolean isSprintingToggle = client.options.getSprintToggled().getValue();
 
-				String text = "§7§oSprint Held"; // TODO: add ability to change the text in config
-				if (isSprintingToggled && isSprintingHeld) {
+				String text = "§7§oStanding"; // TODO: add ability to change the text in config
+				if (isSprintingToggle) {
 					text = "§7§oSprint Toggled";
+				} else {
+					if (isSprintingHeld) {
+						text = "§7§oSprint Held";
+					} else {
+						text = "§7§oWalking"
+					}
 				}
 
 				int[] textPos = DrawUtils.getProperOffsets(client, 20, 30, text);
