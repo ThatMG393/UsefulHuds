@@ -1,12 +1,20 @@
 package com.thatmg393.usefulhuds.config.integrations;
 
-import com.thatmg393.usefulhuds.config.gui.ModClothGui;
+import com.thatmg393.usefulhuds.config.gui.ModClothConfigScreen;
+import com.thatmg393.usefulhuds.config.gui.ModFallbackConfigScreen;
+
+import net.fabricmc.loader.api.FabricLoader;
+
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
 
 public class ModMenuIntegration implements ModMenuApi {
     @Override
     public ConfigScreenFactory<?> getModConfigScreenFactory() {
-        return parent -> ModClothGui.getConfigGui(parent);
+        if (FabricLoader.getInstance().isModLoaded("")) {
+            return parent -> ModClothConfigScreen.getConfigGui(parent);
+        }
+
+        return parent -> new ModFallbackConfigScreen(parent);
     }
 }

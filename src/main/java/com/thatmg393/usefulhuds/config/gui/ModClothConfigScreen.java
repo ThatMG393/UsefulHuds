@@ -11,7 +11,7 @@ import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
 
-public class ModClothGui {
+public class ModClothConfigScreen {
     public static Screen getConfigGui(Screen parent) {
         ConfigBuilder configBuilder = ConfigBuilder.create();
         configBuilder.setParentScreen(parent);
