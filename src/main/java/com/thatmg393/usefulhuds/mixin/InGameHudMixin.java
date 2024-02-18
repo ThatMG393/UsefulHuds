@@ -49,14 +49,12 @@ public class InGameHudMixin {
 				boolean isSprintingHeld = client.player.isSprinting();
 				boolean isSprintingToggle = client.options.getSprintToggled().getValue();
 
-				String text = "§7§oStanding"; // TODO: add ability to change the text in config
+				String text = ""; // TODO: add ability to change the text in config
 				if (isSprintingToggle) {
 					text = "§7§oSprint Toggled";
 				} else {
 					if (isSprintingHeld) {
 						text = "§7§oSprint Held";
-					} else if (client.player.speed > 0) {
-						text = "§7§oWalking";
 					}
 				}
 
