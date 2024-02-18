@@ -19,9 +19,10 @@ public class InGameHudMixin {
 	@Inject(at = @At("TAIL"), method = "render")
 	public void render(DrawContext context, float tickDelta, CallbackInfo info) {
 		MinecraftClient client = MinecraftClient.getInstance();
-		ModConfigData config = ModConfigManager.loadConfig();
 		
 		if (!client.options.hudHidden && !client.getDebugHud().shouldShowDebugHud()) {
+			ModConfigData config = ModConfigManager.loadConfig();
+
 			if (config.fps_showHud) {
 				FPSHistory fpsHistory = FPSHistory.getInstance();
 
