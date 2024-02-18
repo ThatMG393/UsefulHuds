@@ -56,7 +56,7 @@ public class InGameHudMixin {
 					if (isSprintingHeld) {
 						text = "§7§oSprint Held";
 					} else {
-						text = "§7§oWalking"
+						text = "§7§oWalking";
 					}
 				}
 
