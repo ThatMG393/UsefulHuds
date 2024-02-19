@@ -50,7 +50,7 @@ jobs:
         run: |
           echo "Extracting tag from ${{ github.ref }}"
           tag=${{ github.ref }}
-          tag=${ ${{ tag#refs/tags/ }
+          tag=${ tag#refs/tags/ }
           echo "::set-output name=tag::$tag"
 
       - name: Upload to Modrinth
