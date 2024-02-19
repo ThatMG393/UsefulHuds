@@ -9,8 +9,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import com.thatmg393.usefulhuds.config.ModConfigData;
 import com.thatmg393.usefulhuds.config.ModConfigManager;
+import com.thatmg393.usefulhuds.config.data.ModConfigData;
 import com.thatmg393.usefulhuds.utils.DrawUtils;
 import com.thatmg393.usefulhuds.utils.FPSHistory;
 
@@ -22,14 +22,14 @@ public class InGameHudMixin {
 	@Inject(at = @At("TAIL"), method = "render")
 	public void render(DrawContext context, float tickDelta, CallbackInfo info) {
 		if (!client.options.hudHidden && !client.getDebugHud().shouldShowDebugHud()) {
-			if (config.fps_showHud) {
+			if (config.FPS.showHud) {
 				FPSHistory fpsHistory = FPSHistory.getInstance();
 
 				int fps = ((MinecraftClientAccessor) client).getCurrentFps();
 				fpsHistory.addFPS(fps);
 
 				String text = fps + " FPS";
-				if (config.fps_showAdvanceInfo) {
+				if (config.FPS.ADVANCED.showAdvanceInfo) {
 					int min = fpsHistory.getMin(), avg = fpsHistory.getAvg(), max = fpsHistory.getMax();
 					text += " ( " + min + " min | " + avg + " avg | " + max + " max )";
 				}
@@ -40,18 +40,20 @@ public class InGameHudMixin {
 					context, client.textRenderer,
 					text,
 					textPos[0], textPos[1],
-					1.0f, config.fps_textColor,
+					1.0f, config.FPS.textColor,
 					false
 				);
 			}
 
-			if (config.std_showHud) {
+			if (config.STD.showHud) {
 				boolean isSprintingHeld = client.player.isSprinting();
 				boolean isSprintingToggle = client.options.getSprintToggled().getValue();
 
 				String text = ""; // TODO: add ability to change the text in config
 				if (isSprintingToggle) {
-					text = "§7§oSprint Toggled";
+					if (isSprintingHeld) {
+						text = "§7§oSprint Toggled";
+					}
 				} else {
 					if (isSprintingHeld) {
 						text = "§7§oSprint Held";
@@ -63,7 +65,7 @@ public class InGameHudMixin {
 					context, client.textRenderer,
 					text,
 					textPos[0], textPos[1],
-					1.0f, config.std_textColor,
+					1.0f, config.STD.textColor,
 					false
 				);
 			}

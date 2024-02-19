@@ -1,8 +1,8 @@
 package com.thatmg393.usefulhuds.config.gui;
 
 import com.thatmg393.usefulhuds.UsefulHUDs;
-import com.thatmg393.usefulhuds.config.ModConfigData;
 import com.thatmg393.usefulhuds.config.ModConfigManager;
+import com.thatmg393.usefulhuds.config.data.ModConfigData;
 
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import me.shedaniel.clothconfig2.api.ConfigCategory;
@@ -30,18 +30,18 @@ public class ModClothConfigScreen {
         fpsCategory.addEntry(
             entryBuilder.startBooleanToggle(
                 Text.of("Show HUD"),
-                loadedConfig.fps_showHud
-            ).setDefaultValue(defaults.fps_showHud)
-            .setSaveConsumer(newValue -> loadedConfig.fps_showHud = newValue)
+                loadedConfig.FPS.showHud
+            ).setDefaultValue(defaults.FPS.showHud)
+            .setSaveConsumer(newValue -> loadedConfig.FPS.showHud = newValue)
             .build()
         );
 
         fpsCategory.addEntry(
             entryBuilder.startColorField(
                 Text.of("Text Color"),
-                loadedConfig.fps_textColor
-            ).setDefaultValue(defaults.fps_textColor)
-            .setSaveConsumer(newValue -> loadedConfig.fps_textColor = newValue)
+                loadedConfig.FPS.textColor
+            ).setDefaultValue(defaults.FPS.textColor)
+            .setSaveConsumer(newValue -> loadedConfig.FPS.textColor = newValue)
             .build()
         );
 
@@ -49,9 +49,9 @@ public class ModClothConfigScreen {
         fpsAdvancedCategory.add(
             entryBuilder.startBooleanToggle(
                 Text.of("Show MinAvgMax"),
-                loadedConfig.fps_showAdvanceInfo
-            ).setDefaultValue(defaults.fps_showAdvanceInfo)
-            .setSaveConsumer(newValue -> loadedConfig.fps_showAdvanceInfo = newValue)
+                loadedConfig.FPS.ADVANCED.showAdvanceInfo
+            ).setDefaultValue(defaults.FPS.ADVANCED.showAdvanceInfo)
+            .setSaveConsumer(newValue -> loadedConfig.FPS.ADVANCED.showAdvanceInfo = newValue)
             .build()
         );
 
@@ -61,18 +61,18 @@ public class ModClothConfigScreen {
         stCategory.addEntry(
             entryBuilder.startBooleanToggle(
                 Text.of("Show HUD"),
-                loadedConfig.std_showHud
-            ).setDefaultValue(defaults.std_showHud)
-            .setSaveConsumer(newValue -> loadedConfig.std_showHud = newValue)
+                loadedConfig.STD.showHud
+            ).setDefaultValue(defaults.STD.showHud)
+            .setSaveConsumer(newValue -> loadedConfig.STD.showHud = newValue)
             .build()
         );
 
         stCategory.addEntry(
             entryBuilder.startColorField(
                 Text.of("Text Color"),
-                loadedConfig.std_textColor
-            ).setDefaultValue(defaults.std_textColor)
-            .setSaveConsumer(newValue -> loadedConfig.std_textColor = newValue)
+                loadedConfig.STD.textColor
+            ).setDefaultValue(defaults.STD.textColor)
+            .setSaveConsumer(newValue -> loadedConfig.STD.textColor = newValue)
             .build()
         );
 

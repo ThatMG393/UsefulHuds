@@ -3,6 +3,7 @@ package com.thatmg393.usefulhuds.config;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.thatmg393.usefulhuds.UsefulHUDs;
+import com.thatmg393.usefulhuds.config.data.ModConfigData;
 
 import net.fabricmc.loader.api.FabricLoader;
 

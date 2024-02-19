@@ -15,8 +15,8 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.thatmg393.usefulhuds.config.ModConfigData;
 import com.thatmg393.usefulhuds.config.ModConfigManager;
+import com.thatmg393.usefulhuds.config.data.ModConfigData;
 
 @Environment(EnvType.CLIENT)
 public class UsefulHUDs implements ModInitializer {
@@ -52,12 +52,12 @@ public class UsefulHUDs implements ModInitializer {
 
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
 			int maxFps = client.options.getMaxFps().getValue();
-			if (maxFps != loadedConfig.fps_histroyMax) {
-				loadedConfig.fps_histroyMax = maxFps;
+			if (maxFps != loadedConfig.FPS.ADVANCED.histroyMax) {
+				loadedConfig.FPS.ADVANCED.histroyMax = maxFps;
 			}
 
 			if (showFpsKeyBind.wasPressed()) {
-				loadedConfig.fps_showHud = !loadedConfig.fps_showHud;
+				loadedConfig.FPS.showHud = !loadedConfig.FPS.showHud;
 			}
 		});
 	}

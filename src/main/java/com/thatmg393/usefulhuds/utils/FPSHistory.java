@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import com.thatmg393.usefulhuds.config.ModConfigManager;
+import com.thatmg393.usefulhuds.config.data.ModConfigData;
 
 public class FPSHistory {
     private static final FPSHistory INSTANCE = new FPSHistory();
@@ -11,12 +12,13 @@ public class FPSHistory {
         return INSTANCE;
     }
 
+    private final ModConfigData config = ModConfigManager.loadConfig();
     private final ArrayList<Integer> fpsList = new ArrayList<>();
 
     public void addFPS(int fps) {
         fpsList.add(fps);
 
-        if (fpsList.size() > ModConfigManager.loadConfig().fps_histroyMax) {
+        if (fpsList.size() > config.FPS.ADVANCED.histroyMax) {
             fpsList.remove(0);
         }
     }
@@ -30,10 +32,9 @@ public class FPSHistory {
     }
 
     public int getAvg() {
-        int sum = 0;
-        for (int fps : fpsList) {
-            sum += fps;
-        }
-        return sum / fpsList.size();
+        return (int) fpsList.parallelStream()
+            .mapToInt(Integer::intValue)
+            .average()
+            .orElse(0);
     }
 }
