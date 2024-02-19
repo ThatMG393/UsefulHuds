@@ -9,8 +9,8 @@
 		"Grayray75"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://github.com/ThatMG393",
+		"sources": "https://github.com/ThatMG393/UsefulHUDs"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/usefulhuds/icon.png",
@@ -28,7 +28,7 @@
 	],
 	"depends": {
 		"fabricloader": ">=0.14.4",
-		"minecraft": [ "1.20.3", "1.20.4" ],
+		"minecraft": ">=1.20.3",
 		"java": ">=17",
 		"fabric-api": "*",
 		"fabric-key-binding-api-v1": "*",
@@ -37,5 +37,10 @@
 	"suggests": {
 		"cloth-config": "*",
 		"modmenu": "*"
+	},
+	"custom": {
+		"mc-publish": {
+			"modrinth": "p6ZQTwZf"
+		}
 	}
 }
