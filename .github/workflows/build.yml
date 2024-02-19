@@ -68,5 +68,5 @@ jobs:
           github-generate-changelog: true
           github-draft: false
           github-prerelease: false
-          changelog-file: CHANGELOG.md
+          # changelog-file: CHANGELOG.md
  
