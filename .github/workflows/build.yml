@@ -46,6 +46,7 @@ jobs:
           path: build/libs/
 
       - name: Extract Tag
+        id: extract_tag
         if: ${{ matrix.java == '21' && startsWith(github.ref, 'refs/tags/v') }}
         run: |
           echo "Extracting tag from ${{ github.ref }}"
