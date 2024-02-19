@@ -62,7 +62,7 @@ jobs:
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
 
           name: UsefulHUDs ${{ steps.extract_tag.outputs.tag }}
-          files: build/libs/usefulhuds-*.*.*+release.*.jar
+          files: build/libs/usefulhuds-${{steps.extract_tag.outputs.tag}}.jar
           version-type: release
 
           loaders: |
