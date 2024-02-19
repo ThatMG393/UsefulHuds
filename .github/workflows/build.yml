@@ -69,6 +69,4 @@ jobs:
           github-draft: false
           github-prerelease: false
           changelog-file: CHANGELOG.md
-                                                                                  github-token: ${{ secrets.GITHUB_TOKEN }}
-
-
+ 
