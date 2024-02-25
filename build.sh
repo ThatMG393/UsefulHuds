@@ -23,7 +23,7 @@ if [[ "$TAG" != refs/tags/v* ]]; then
     echo "Seems like build is debug"
     get_bin_ver
 
-    REAL=${BIN_VER//(release[.][0-9]|debug)/debug}
+    REAL=$(echo $BIN_VER | sed -E "s#(release[.][0-9]|debug)#debug#g")
     echo "Gonna set BIN_VER to this $REAL"
 
     update_binary_version $REAL
