@@ -1,4 +1,4 @@
-TAG="${1#refs/tags}"
+TAG="$1"
 BIN_VER="null"
 VERSION_PATTERN="v([0-9.]){5}[+](release[.][0-9]|debug)"
 
@@ -20,20 +20,23 @@ function get_bin_ver() {
 
 echo "Updating binary version"
 if [[ "$TAG" != refs/tags/v* ]]; then
+    echo "Seems like build is debug"
     get_bin_ver
-    
+
     REAL=${BIN_VER//(release[.][0-9]|debug)/debug}
     echo "Gonna set BIN_VER to this $REAL"
 
     update_binary_version $REAL
     get_bin_ver
 else
+    TAG="${TAG#refs/tags/}"
+    echo "Build is release, using $TAG as the version"
+
     # set_binary_build_type "release"
     update_binary_version $TAG
     get_bin_ver
 fi
 echo "New version: $BIN_VER"
-
 
 echo "Building with GradleW"
 ./gradlew build
