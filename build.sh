@@ -21,7 +21,10 @@ function get_bin_ver() {
 echo "Updating binary version"
 if [[ "$TAG" != refs/tags/v* ]]; then
     get_bin_ver
+    
     REAL=${BIN_VER//(release[.][0-9]|debug)/debug}
+    echo "Gonna set BIN_VER to this $REAL"
+
     update_binary_version $REAL
     get_bin_ver
 else
