@@ -14,7 +14,7 @@ function update_binary_version() {
 }
 
 function get_bin_ver() {
-    BIN_VER=(cat gradle.properties | grep -Eo $VERSION_PATTERN)
+    BIN_VER=$(cat gradle.properties | grep -Eo $VERSION_PATTERN)
 }
 
 if [[ "$TAG" != refs/tags/v* ]]; then
