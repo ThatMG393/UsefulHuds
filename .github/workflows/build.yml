@@ -37,7 +37,7 @@ jobs:
 
       - name: Build
         id: build_bin
-        run: bash build.sh
+        run: bash build.sh ${{ github.ref }}
 
       - name: Capture build artifacts
         if: ${{ matrix.java == '21' }}
