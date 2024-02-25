@@ -36,7 +36,8 @@ jobs:
         run: chmod +x ./gradlew
 
       - name: Build
-        run: ./gradlew build
+        id: build_bin
+        run: bash build.sh
 
       - name: Capture build artifacts
         if: ${{ matrix.java == '21' }}
@@ -45,24 +46,15 @@ jobs:
           name: usefulhuds-build
           path: build/libs/
 
-      - name: Extract Tag
-        id: extract_tag
-        if: ${{ matrix.java == '21' && startsWith(github.ref, 'refs/tags/v') }}
-        run: |
-          echo "Extracting tag from ${{ github.ref }}"
-          tag=${{ github.ref }}
-          tag="${tag#refs/tags/}"
-          echo "tag=$tag" >> $GITHUB_OUTPUT
-
       - name: Upload to Modrinth
-        if: ${{ matrix.java == '21' && startsWith(github.ref, 'refs/tags/v') }}
+        if: ${{ matrix.java == '21' && startsWith(steps.build_bin.outputs.binver, 'v') }}
         uses: Kir-Antipov/mc-publish@v3.3
         with: 
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
           github-token: ${{ secrets.GH_TOKEN }}
 
-          name: UsefulHUDs ${{ steps.extract_tag.outputs.tag }}
-          files: build/libs/usefulhuds-${{steps.extract_tag.outputs.tag}}.jar
+          name: UsefulHUDs ${{ steps.build_bin.outputs.binver }}
+          files: build/libs/usefulhuds-${{ steps.build_bin.outputs.binver }}.jar
           version-type: release
  
           github-generate-changelog: true
