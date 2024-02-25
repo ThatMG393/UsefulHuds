@@ -15,8 +15,10 @@ function update_binary_version() {
 function get_bin_ver() {
     # PROP=$(cat gradle.properties)
     BIN_VER=$(grep -Eo "$VERSION_PATTERN" gradle.properties)
+    echo "Got version: $BIN_VER"
 }
 
+echo "Updating binary version"
 if [[ "$TAG" != refs/tags/v* ]]; then
     get_bin_ver
     REAL=${BIN_VER//(release[.][0-9]|debug)/debug}
@@ -27,7 +29,11 @@ else
     update_binary_version $TAG
     get_bin_ver
 fi
+echo "New version: $BIN_VER"
 
+
+echo "Building with GradleW"
 ./gradlew build
 
+echo "Setting output: binver=$BIN_VER"
 set_output "binver" $BIN_VER
