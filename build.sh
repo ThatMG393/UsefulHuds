@@ -35,11 +35,11 @@ else
     # set_binary_build_type "release"
     update_binary_version $TAG
     get_bin_ver
+
+    echo "Setting build output: binver=$BIN_VER"
+    set_output "binver" $BIN_VER
 fi
 echo "New version: $BIN_VER"
 
 echo "Building with GradleW"
 ./gradlew build
-
-echo "Setting output: binver=$BIN_VER"
-set_output "binver" $BIN_VER
