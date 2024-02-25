@@ -18,13 +18,12 @@ import com.thatmg393.usefulhuds.utils.FPSHistory;
 public class InGameHudMixin {
 	final MinecraftClient client = MinecraftClient.getInstance();
 	final ModConfigData config = ModConfigManager.loadConfig();
+	final FPSHistory fpsHistory = FPSHistory.getInstance();
 
 	@Inject(at = @At("TAIL"), method = "render")
 	public void render(DrawContext context, float tickDelta, CallbackInfo info) {
 		if (!client.options.hudHidden && !client.getDebugHud().shouldShowDebugHud()) {
 			if (config.FPS.showHud) {
-				FPSHistory fpsHistory = FPSHistory.getInstance();
-
 				int fps = ((MinecraftClientAccessor) client).getCurrentFps();
 				fpsHistory.addFPS(fps);
 
