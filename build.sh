@@ -1,5 +1,6 @@
 TAG="${1#refs/tags}"
 BIN_VER="null"
+VERSION_PATTERN="v([0-9.]){5}[+](release[.][0-9]|debug)"
 
 # $1 Key | $2 Value
 function set_output() {
@@ -8,13 +9,12 @@ function set_output() {
 
 function update_binary_version() {
     NEW_VERSION=$1
-    VERSION_PATTERN="v([0-9.]){5}[+](release[.][0-9]|debug)"
-
     sed -i'' -E "s#$VERSION_PATTERN#$NEW_VERSION#g" gradle.properties
 }
 
 function get_bin_ver() {
-    BIN_VER=$(cat gradle.properties | grep -Eo $VERSION_PATTERN)
+    # PROP=$(cat gradle.properties)
+    BIN_VER=$(grep -Eo "$VERSION_PATTERN" gradle.properties)
 }
 
 if [[ "$TAG" != refs/tags/v* ]]; then
