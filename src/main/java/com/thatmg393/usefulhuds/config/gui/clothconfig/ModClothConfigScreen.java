@@ -13,7 +13,7 @@ public class ModClothConfigScreen {
     public static Screen getConfigGui(Screen parent) {
         ConfigBuilder configBuilder = ConfigBuilder.create();
         configBuilder.setParentScreen(parent);
-        configBuilder.setTitle(Text.of("cOnFIG")); // FIXME: Use Text.translatable() instead
+        configBuilder.setTitle(Text.translatable("usefulhuds.config.title"));
         configBuilder.setSavingRunnable(() -> {
             UsefulHUDs.LOGGER.info("Saving configs...");
             ModConfigManager.saveConfig();

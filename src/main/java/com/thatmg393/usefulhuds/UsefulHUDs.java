@@ -5,6 +5,7 @@ import org.lwjgl.glfw.GLFW;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
+import net.minecraft.text.Text;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.ModInitializer;
@@ -39,10 +40,10 @@ public class UsefulHUDs implements ModInitializer {
 	private void initalizeKeybinds() {
 		KeyBinding showFpsKeyBind = KeyBindingHelper.registerKeyBinding(
 			new KeyBinding(
-				"usefulhuds.key.toggleFps",
+				Text.translatable("usefulhuds.keybinds.togglefpshud").getString(),
 				InputUtil.Type.KEYSYM,
 				GLFW.GLFW_DONT_CARE,
-				"usefulhuds.key.category"
+				Text.translatable("usefulhuds.name").getString()
 			)
 		);
 
@@ -55,7 +56,7 @@ public class UsefulHUDs implements ModInitializer {
 			}
 
 			if (showFpsKeyBind.wasPressed()) {
-				loadedConfig.FPS.showHud = !loadedConfig.FPS.showHud;
+				loadedConfig.FPS.visible = !loadedConfig.FPS.visible;
 			}
 		});
 	}

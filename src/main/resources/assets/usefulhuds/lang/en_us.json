@@ -1,0 +1,17 @@
+{
+    "usefulhuds.name": "UsefulHUDs",
+    "usefulhuds.config.title": "UsefulHUDs config",
+    "usefulhuds.config.hudvisible": "HUD Visible",
+    "usefulhuds.config.hudtextcolor": "HUD Text Color",
+    "usefulhuds.config.hudoffsetx": "HUD Offset X",
+    "usefulhuds.config.hudoffsety": "HUD Offset Y",
+    "usefulhuds.config.hudscale": "HUD Scale",
+    "usefulhuds.config.fps.title": "FPS Category",
+    "usefulhuds.config.fps.advanced.name": "Advanced",
+    "usefulhuds.config.fps.advanced.showminavgmax": "Show MinAvgMax",
+    "usefulhuds.config.std.title": "SprintToggle Category",
+    "usefulhuds.config.fallback.title": "UsefulHUDs (not a) config",
+    "usefulhuds.config.fallback.why": "Please install Cloth Config to access the configs!",
+    "usefulhuds.keybinds.togglefpshud": "Toggle FPS HUD",
+    "usefulhuds.keybinds.togglestdhud": "Toggle SprintToggle Display"
+}

@@ -23,7 +23,7 @@ public class InGameHudMixin {
 	@Inject(at = @At("TAIL"), method = "render")
 	public void render(DrawContext context, float tickDelta, CallbackInfo info) {
 		if (!client.options.hudHidden && !client.getDebugHud().shouldShowDebugHud()) {
-			if (config.FPS.showHud) {
+			if (config.FPS.visible) {
 				int fps = ((MinecraftClientAccessor) client).getCurrentFps();
 				fpsHistory.addFPS(fps);
 
@@ -33,18 +33,18 @@ public class InGameHudMixin {
 					text += " ( " + min + " min | " + avg + " avg | " + max + " max )";
 				}
 
-				int[] textPos = DrawUtils.getProperOffsets(client, 20, 20, text);
+				int[] textPos = DrawUtils.getProperOffsets(client, config.FPS.offsetX, config.FPS.offsetY, text);
 
 				DrawUtils.renderText(
 					context, client.textRenderer,
 					text,
 					textPos[0], textPos[1],
-					1.0f, config.FPS.textColor,
+					config.FPS.scale, config.FPS.textColor,
 					false
 				);
 			}
 
-			if (config.STD.showHud) {
+			if (config.STD.visible) {
 				boolean isSprintingHeld = client.player.isSprinting();
 				boolean isSprintingToggle = client.options.getSprintToggled().getValue();
 
@@ -59,12 +59,12 @@ public class InGameHudMixin {
 					}
 				}
 
-				int[] textPos = DrawUtils.getProperOffsets(client, 20, 30, text);
+				int[] textPos = DrawUtils.getProperOffsets(client, config.STD.offsetX, config.STD.offsetY, text);
 				DrawUtils.renderText(
 					context, client.textRenderer,
 					text,
 					textPos[0], textPos[1],
-					1.0f, config.STD.textColor,
+					config.STD.scale, config.STD.textColor,
 					false
 				);
 			}
