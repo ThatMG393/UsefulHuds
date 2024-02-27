@@ -17,7 +17,7 @@ import com.thatmg393.usefulhuds.utils.FPSHistory;
 @Mixin(InGameHud.class)
 public class InGameHudMixin {
 	final MinecraftClient client = MinecraftClient.getInstance();
-	final ModConfigData config = ModConfigManager.loadConfig();
+	final ModConfigData config = ModConfigManager.loadOrGetConfig();
 	final FPSHistory fpsHistory = FPSHistory.getInstance();
 
 	@Inject(at = @At("TAIL"), method = "render")

@@ -26,7 +26,7 @@ public class ModConfigManager {
     private static ModConfigData defaultConfig = new ModConfigData();
     private static ModConfigData loadedConfig;
 
-    public static ModConfigData loadConfig() {
+    public static ModConfigData loadOrGetConfig() {
         if (loadedConfig != null) {
             return loadedConfig;
         }

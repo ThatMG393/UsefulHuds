@@ -21,7 +21,7 @@ public abstract class AbstractConfigCategory {
 
     public AbstractConfigCategory(Text title) {
         this.title = title;
-        this.config = ModConfigManager.loadConfig();
+        this.config = ModConfigManager.loadOrGetConfig();
         this.defaultConfig = ModConfigManager.getDefaultConfig();
     }
 

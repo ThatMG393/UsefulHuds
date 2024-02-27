@@ -12,7 +12,7 @@ public class FPSHistory {
         return INSTANCE;
     }
 
-    private final ModConfigData config = ModConfigManager.loadConfig();
+    private final ModConfigData config = ModConfigManager.loadOrGetConfig();
     private final ArrayList<Integer> fpsList = new ArrayList<>();
 
     public void addFPS(int fps) {

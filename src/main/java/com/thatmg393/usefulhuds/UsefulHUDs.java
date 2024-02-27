@@ -47,7 +47,7 @@ public class UsefulHUDs implements ModInitializer {
 			)
 		);
 
-		ModConfigData loadedConfig = ModConfigManager.loadConfig();
+		ModConfigData loadedConfig = ModConfigManager.loadOrGetConfig();
 
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
 			int maxFps = client.options.getMaxFps().getValue();
