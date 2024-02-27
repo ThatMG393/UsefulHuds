@@ -22,7 +22,8 @@ public class ModConfigManager {
             UsefulHUDs.MOD_ID + ".json"
         ).toString()
     );
- 
+
+    public static ModConfigData defaultConfig = new ModConfigData();
     private static ModConfigData loadedConfig;
 
     public static ModConfigData loadConfig() {
@@ -39,11 +40,15 @@ public class ModConfigManager {
             UsefulHUDs.LOGGER.error("An exception occurred! " + e.toString());
 
             UsefulHUDs.LOGGER.info("Using default config instead...");
-            loadedConfig = new ModConfigData();
+            loadedConfig = defaultConfig;
             saveConfig();
         }
 
         return loadedConfig;
+    }
+
+    public static ModConfigData getDefaultConfig() {
+        return defaultConfig;
     }
 
     public static void saveConfig() {

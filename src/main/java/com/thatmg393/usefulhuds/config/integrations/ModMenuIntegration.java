@@ -1,7 +1,7 @@
 package com.thatmg393.usefulhuds.config.integrations;
 
-import com.thatmg393.usefulhuds.config.gui.ModClothConfigScreen;
 import com.thatmg393.usefulhuds.config.gui.ModFallbackConfigScreen;
+import com.thatmg393.usefulhuds.config.gui.clothconfig.ModClothConfigScreen;
 
 import net.fabricmc.loader.api.FabricLoader;
 
