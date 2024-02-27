@@ -42,4 +42,4 @@ fi
 echo "New version: $BIN_VER"
 
 echo "Building with GradleW"
-./gradlew build
+./gradlew build --no-daemon --configure-on-demand "-Dorg.gradle.parralel=true"
