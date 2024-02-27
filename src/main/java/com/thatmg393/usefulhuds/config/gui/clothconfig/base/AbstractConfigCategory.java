@@ -30,7 +30,6 @@ public abstract class AbstractConfigCategory {
 
     public void build(ConfigBuilder configBuilder) {
         ConfigCategory cc = configBuilder.getOrCreateCategory(title);
-        getEntries().stream().parallel()
-            .forEach(e -> cc.addEntry(e));
+        getEntries().forEach(e -> cc.addEntry(e));
     }
 }

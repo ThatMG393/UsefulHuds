@@ -35,7 +35,7 @@ public class FPSCategory extends AbstractConfigCategory {
     private SubCategory ADVANCED = new SubCategory();
 
     public FPSCategory() {
-        super(Text.of("FPS"));
+        super(Text.of("FPSDisplay"));
     }
 
     @Override
