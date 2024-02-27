@@ -31,6 +31,7 @@ public abstract class AbstractConfigSubCategory {
         this.defaultConfig = csc.defaultConfig;
     }
 
+    @SuppressWarnings("rawtypes")
     public abstract ArrayList<AbstractConfigListEntry> getEntries();
 
     public SubCategoryListEntry build() {

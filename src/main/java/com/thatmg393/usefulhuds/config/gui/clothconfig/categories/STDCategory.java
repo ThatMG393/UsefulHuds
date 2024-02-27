@@ -7,6 +7,7 @@ import com.thatmg393.usefulhuds.config.gui.clothconfig.base.AbstractConfigCatego
 import me.shedaniel.clothconfig2.api.AbstractConfigListEntry;
 import net.minecraft.text.Text;
 
+@SuppressWarnings("rawtypes")
 public class STDCategory extends AbstractConfigCategory {
     public STDCategory() {
         super(Text.of("SprintToggleDisplay"));

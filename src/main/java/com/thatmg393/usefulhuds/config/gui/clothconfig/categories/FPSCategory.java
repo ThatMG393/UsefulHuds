@@ -8,6 +8,7 @@ import com.thatmg393.usefulhuds.config.gui.clothconfig.base.AbstractConfigSubCat
 import me.shedaniel.clothconfig2.api.AbstractConfigListEntry;
 import net.minecraft.text.Text;
 
+@SuppressWarnings("rawtypes")
 public class FPSCategory extends AbstractConfigCategory {
     public class SubCategory extends AbstractConfigSubCategory {
         public SubCategory() {
