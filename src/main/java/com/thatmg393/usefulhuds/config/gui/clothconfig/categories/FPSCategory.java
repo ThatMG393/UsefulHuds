@@ -5,10 +5,7 @@ import java.util.ArrayList;
 import com.thatmg393.usefulhuds.config.gui.clothconfig.base.AbstractConfigCategory;
 import com.thatmg393.usefulhuds.config.gui.clothconfig.base.AbstractConfigSubCategory;
 import com.thatmg393.usefulhuds.utils.DisplayUtils;
-import com.thatmg393.usefulhuds.utils.DrawUtils;
-
 import me.shedaniel.clothconfig2.api.AbstractConfigListEntry;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.Text;
 
 @SuppressWarnings("rawtypes")

@@ -1,8 +1,5 @@
 package com.thatmg393.usefulhuds.config.gui;
 
-import com.thatmg393.usefulhuds.config.ModConfigManager;
-import com.thatmg393.usefulhuds.config.data.ModConfigData;
-
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
