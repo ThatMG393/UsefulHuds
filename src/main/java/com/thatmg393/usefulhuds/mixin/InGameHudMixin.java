@@ -50,9 +50,7 @@ public class InGameHudMixin {
 
 				String text = ""; // TODO: add ability to change the text in config
 				if (isSprintingToggle) {
-					if (isSprintingHeld) {
-						text = "§7§oSprint Toggled";
-					}
+					text = "§7§oSprint Toggled";
 				} else {
 					if (isSprintingHeld) {
 						text = "§7§oSprint Held";
