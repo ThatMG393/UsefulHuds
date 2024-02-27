@@ -23,7 +23,7 @@ public class ModConfigManager {
         ).toString()
     );
 
-    public static ModConfigData defaultConfig = new ModConfigData();
+    private static ModConfigData defaultConfig = new ModConfigData();
     private static ModConfigData loadedConfig;
 
     public static ModConfigData loadConfig() {
@@ -40,7 +40,7 @@ public class ModConfigManager {
             UsefulHUDs.LOGGER.error("An exception occurred! " + e.toString());
 
             UsefulHUDs.LOGGER.info("Using default config instead...");
-            loadedConfig = defaultConfig;
+            loadedConfig = new ModConfigData();
             saveConfig();
         }
 
