@@ -1,12 +1,16 @@
 package com.thatmg393.usefulhuds.utils;
 
+import com.mojang.blaze3d.systems.RenderSystem;
+
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.resource.Resource;
+import net.minecraft.util.Identifier;
 
 public class DrawUtils {
-    public static void renderText(
+    public static void drawText(
 		DrawContext context,
 		TextRenderer renderer,
 		String text,
@@ -28,6 +32,24 @@ public class DrawUtils {
 		if (matrixStack != null) {
 			matrixStack.pop();
 		}
+	}
+
+	public static void drawBox(
+		DrawContext drawContext,
+		int posX, int posY,
+		int scaleX, int scaleY,
+		int color
+	) {
+		drawContext.fill(posX, posY, scaleX, scaleY, color);
+	}
+
+	public static void drawTexture(
+		DrawContext drawContext,
+		Identifier resource,
+		int posX, int posY,
+		int scaleX, int scaleY
+	) {
+		drawContext.drawTexture(resource, posX, posY, 0, 1, scaleX, scaleY);
 	}
 
 	public static int[] getProperOffsets(MinecraftClient client, int posX, int posY, String text) {

@@ -33,6 +33,13 @@ public class ModConfigData {
 
     public class CoordsSection {
         public boolean visible = true;
+
+        public int offsetX = 20;
+        public int offsetY = 40;
+        public int scale = 1;
+
+        public int paddingX = 4;
+        public int paddingY = 4;
     }
 
     public final FPSSection FPS = new FPSSection();

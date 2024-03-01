@@ -11,6 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import com.thatmg393.usefulhuds.config.ModConfigManager;
 import com.thatmg393.usefulhuds.config.data.ModConfigData;
+import com.thatmg393.usefulhuds.utils.DisplayUtils;
 import com.thatmg393.usefulhuds.utils.DrawUtils;
 import com.thatmg393.usefulhuds.utils.FPSHistory;
 
@@ -35,7 +36,7 @@ public class InGameHudMixin {
 
 				int[] textPos = DrawUtils.getProperOffsets(client, config.FPS.offsetX, config.FPS.offsetY, text);
 
-				DrawUtils.renderText(
+				DrawUtils.drawText(
 					context, client.textRenderer,
 					text,
 					textPos[0], textPos[1],
@@ -58,13 +59,40 @@ public class InGameHudMixin {
 				}
 
 				int[] textPos = DrawUtils.getProperOffsets(client, config.STD.offsetX, config.STD.offsetY, text);
-				DrawUtils.renderText(
+				DrawUtils.drawText(
 					context, client.textRenderer,
 					text,
 					textPos[0], textPos[1],
 					config.STD.scale, config.STD.textColor,
 					false
 				);
+			}
+
+			if (config.COORDS.visible) {
+				int boxPosX = context.getScaledWindowWidth() - config.COORDS.scale;
+				int boxPosY = context.getScaledWindowHeight() - config.COORDS.scale;
+
+				DrawUtils.drawBox(
+					context,
+					boxPosX, boxPosY,
+					config.COORDS.scale, config.COORDS.scale,
+					0xFFFFFF
+				);
+
+				String text = "X: " + client.player.getX() 
+				            + "Y: " + client.player.getY()
+							+ "Z: " + client.player.getZ();
+
+				int textPosX = boxPosX + config.COORDS.paddingX; // - client.textRenderer.getWidth(text);
+				int textPosY = boxPosY + config.COORDS.paddingY; // - client.textRenderer.fontHeight;
+
+				DrawUtils.drawText(
+					context,
+					client.textRenderer,
+					text,
+					textPosX, textPosY,
+					1.0f, 0xFFFFFF, false
+				)
 			}
 		}
 	}
