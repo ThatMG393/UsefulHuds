@@ -92,7 +92,7 @@ public class InGameHudMixin {
 					text,
 					textPosX, textPosY,
 					1.0f, 0xFFFFFF, false
-				)
+				);
 			}
 		}
 	}
