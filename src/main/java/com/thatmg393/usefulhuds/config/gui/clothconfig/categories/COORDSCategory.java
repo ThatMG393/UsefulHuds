@@ -11,7 +11,7 @@ import net.minecraft.text.Text;
 @SuppressWarnings("rawtypes")
 public class COORDSCategory extends AbstractConfigCategory {
     public COORDSCategory() {
-        super(Text.translatable("usefulhuds.config.COORDS.title"));
+        super(Text.translatable("usefulhuds.config.coords.title"));
     }
 
     @Override
@@ -42,7 +42,7 @@ public class COORDSCategory extends AbstractConfigCategory {
                 Text.translatable("usefulhuds.config.hudoffsety"),
                 config.COORDS.offsetY,
                 0, DisplayUtils.getScreenScaledWH()[1]
-            ).setDefaultValue(defaultConfig.COORDS.offsetX)
+            ).setDefaultValue(defaultConfig.COORDS.offsetY)
             .setSaveConsumer(v -> config.COORDS.offsetY = v)
             .build()
         );
