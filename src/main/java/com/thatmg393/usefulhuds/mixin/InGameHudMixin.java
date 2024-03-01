@@ -11,7 +11,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import com.thatmg393.usefulhuds.config.ModConfigManager;
 import com.thatmg393.usefulhuds.config.data.ModConfigData;
-import com.thatmg393.usefulhuds.utils.DisplayUtils;
 import com.thatmg393.usefulhuds.utils.DrawUtils;
 import com.thatmg393.usefulhuds.utils.FPSHistory;
 
