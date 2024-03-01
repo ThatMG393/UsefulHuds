@@ -4,6 +4,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.InGameHud;
 
+import org.joml.Math;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -72,9 +73,9 @@ public class InGameHudMixin {
 				            + "Y: " + client.player.getY()
 							+ "Z: " + client.player.getZ();
 
-				int boxPosX = config.COORDS.offsetX - config.COORDS.scale + client.textRenderer.getWidth(text) + (config.COORDS.paddingX / 2);
-				int boxPosY = config.COORDS.offsetY - config.COORDS.scale;
-
+				int boxPosX = config.COORDS.offsetX; // - client.textRenderer.getWidth(text) + (config.COORDS.paddingX / 2);
+				int boxPosY = config.COORDS.offsetY; // - config.COORDS.scale;
+				
 				int textPosX = boxPosX + config.COORDS.paddingX; // - client.textRenderer.getWidth(text);
 				int textPosY = boxPosY + config.COORDS.paddingY; // - client.textRenderer.fontHeight;
 				
