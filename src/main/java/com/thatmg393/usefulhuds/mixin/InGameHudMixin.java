@@ -69,20 +69,22 @@ public class InGameHudMixin {
 			}
 
 			if (config.COORDS.visible) {
-				String text = "X: " + client.player.getX() 
-				            + "Y: " + client.player.getY()
-							+ "Z: " + client.player.getZ();
+				String text = "X: " + (int) client.player.getX()
+				            + "\nY: " + (int) client.player.getY()
+							+ "\nZ: " + (int) client.player.getZ();
 
-				int boxPosX = config.COORDS.offsetX; // - client.textRenderer.getWidth(text) + (config.COORDS.paddingX / 2);
-				int boxPosY = config.COORDS.offsetY; // - config.COORDS.scale;
+				int[] boxPos = DrawUtils.getProperOffsets(client, config.COORDS.offsetX, config.COORDS.offsetY, text);
 				
-				int textPosX = boxPosX + config.COORDS.paddingX; // - client.textRenderer.getWidth(text);
-				int textPosY = boxPosY + config.COORDS.paddingY; // - client.textRenderer.fontHeight;
+				int boxScaleX = config.COORDS.paddingX + client.textRenderer.getWidth(text);
+				int boxScaleY = config.COORDS.paddingY + client.textRenderer.fontHeight;
+
+				int textPosX = boxPos[0] + config.COORDS.paddingX; // - client.textRenderer.getWidth(text);
+				int textPosY = boxPos[1] + config.COORDS.paddingY; // - client.textRenderer.fontHeight;
 				
 				DrawUtils.drawBox(
 					context,
-					boxPosX, boxPosY,
-					config.COORDS.scale, config.COORDS.scale,
+					boxPos[0], boxPos[1],
+					boxScaleX, boxScaleY,
 					0xFFFFFF
 				);
 
