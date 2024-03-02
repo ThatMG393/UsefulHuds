@@ -75,8 +75,8 @@ public class InGameHudMixin {
 
 				int[] boxPos = DrawUtils.getProperOffsets(client, config.COORDS.offsetX, config.COORDS.offsetY, text);
 				
-				int boxScaleX = config.COORDS.paddingX + client.textRenderer.getWidth(text);
-				int boxScaleY = config.COORDS.paddingY + client.textRenderer.fontHeight;
+				int boxScaleX = config.COORDS.paddingX + client.textRenderer.getWidth(text); // + config.COORDS.scale;
+				int boxScaleY = config.COORDS.paddingY + client.textRenderer.fontHeight + config.COORDS.scale;
 
 				int textPosX = boxPos[0] + config.COORDS.paddingX; // - client.textRenderer.getWidth(text);
 				int textPosY = boxPos[1] + config.COORDS.paddingY; // - client.textRenderer.fontHeight;
