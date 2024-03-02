@@ -85,7 +85,7 @@ public class InGameHudMixin {
 					context,
 					boxPos[0], boxPos[1],
 					boxScaleX, boxScaleY,
-					0xFFFFFF
+					0x00FF00
 				);
 
 				DrawUtils.drawText(
