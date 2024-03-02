@@ -93,7 +93,7 @@ public class InGameHudMixin {
 					client.textRenderer,
 					text,
 					textPosX, textPosY,
-					1.0f, 0xFFFFFF, false
+					config.COORDS.scale, 0xFFFFFF, false
 				);
 			}
 		}
