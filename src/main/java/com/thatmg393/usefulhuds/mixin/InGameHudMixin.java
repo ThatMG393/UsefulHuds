@@ -70,8 +70,8 @@ public class InGameHudMixin {
 
 			if (config.COORDS.visible) {
 				String text = "X: " + (int) client.player.getX()
-				            + "\nY: " + (int) client.player.getY()
-							+ "\nZ: " + (int) client.player.getZ();
+				            + " Y: " + (int) client.player.getY()
+							+ " Z: " + (int) client.player.getZ();
 
 				int[] boxPos = DrawUtils.getProperOffsets(client, config.COORDS.offsetX, config.COORDS.offsetY, text);
 				
